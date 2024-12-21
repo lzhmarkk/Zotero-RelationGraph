@@ -9,3 +9,7 @@ prefs-table-title = Title
 prefs-table-detail = Detail
 tabpanel-lib-tab-label = Lib Tab
 tabpanel-reader-tab-label = Reader Tab
+
+menuitem-citationgraph = Citation Graph for Selected Items
+menuitem-authorgraph = Author Graph for Selected Items
+menuitem-taggraph = Tag Graph for Selected Items

@@ -1,8 +1,8 @@
 import { config } from "../package.json";
 import { ColumnOptions } from "zotero-plugin-toolkit/dist/helpers/virtualizedTable";
-import { DialogHelper } from "zotero-plugin-toolkit/dist/helpers/dialog";
 import hooks from "./hooks";
 import { createZToolkit } from "./utils/ztoolkit";
+import GraphView from "./modules/graphview";
 
 class Addon {
   public data: {
@@ -19,7 +19,7 @@ class Addon {
       columns: Array<ColumnOptions>;
       rows: Array<{ [dataKey: string]: string }>;
     };
-    dialog?: DialogHelper;
+    graph?: GraphView;
   };
   // Lifecycle hooks
   public hooks: typeof hooks;

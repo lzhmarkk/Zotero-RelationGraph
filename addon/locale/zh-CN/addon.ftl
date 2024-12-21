@@ -9,3 +9,7 @@ prefs-table-title = 标题
 prefs-table-detail = 详情
 tabpanel-lib-tab-label = 库标签
 tabpanel-reader-tab-label = 阅读器标签
+
+menuitem-citationgraph = 为选择的条目生成引用图
+menuitem-authorgraph = 为选择的条目生成作者关系图
+menuitem-taggraph = 为选择的条目生成标签关系图

@@ -51,16 +51,10 @@ async function onMainWindowLoad(win: Window): Promise<void> {
     `${addon.data.config.addonRef}-mainWindow.ftl`,
   );
 
-  const popupWin = new ztoolkit.ProgressWindow(addon.data.config.addonName, {
-    closeOnClick: true,
-    closeTime: -1,
-  })
-    .createLine({
-      text: getString("startup-begin"),
-      type: "default",
-      progress: 0,
-    })
-    .show();
+  await UIExampleFactory.registerGraphView(win)
+
+  UIExampleFactory.registerRightClickMenuItem();
+
   // UIExampleFactory.registerRightClickMenuPopup(win);
 
   // UIExampleFactory.registerWindowMenuWithSeparator();

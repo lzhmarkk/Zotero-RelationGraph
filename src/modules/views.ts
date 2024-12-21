@@ -1,4 +1,5 @@
 import { getLocaleID, getString } from "../utils/locale";
+import GraphView from "./graphview";
 
 function example(
   target: any,
@@ -136,17 +137,32 @@ export class UIExampleFactory {
     doc.getElementById("zotero-item-pane-content")?.classList.add("makeItRed");
   }
 
+  static async registerGraphView(win: Window) {
+    if (!addon.data.graph){
+      addon.data.graph =  await new GraphView().init(win);
+    }
+  }
+
   @example
   static registerRightClickMenuItem() {
     const menuIcon = `chrome://${addon.data.config.addonRef}/content/icons/favicon@0.5x.png`;
     // item menuitem with icon
     ztoolkit.Menu.register("item", {
-      tag: "menuitem",
-      id: "zotero-itemmenu-addontemplate-test",
-      label: getString("menuitem-label"),
-      commandListener: (ev) => addon.hooks.onDialogEvents("dialogExample"),
-      icon: menuIcon,
+      tag: "menuseparator"
     });
+
+    ["citation", "author", "tag"].forEach((mode) => {
+      ztoolkit.Menu.register("item", {
+        tag: "menuitem",
+        id: `zotero-itemmenu-${mode}graph`,
+        label: getString(`menuitem-${mode}graph`),
+        commandListener: (ev) => {
+          const selected_items:Zotero.Item[] = ztoolkit.getGlobal("ZoteroPane").getSelectedItems();
+            addon.data.graph!.open_graph(mode, selected_items, true)
+        },
+        icon: menuIcon,
+      });
+    })
   }
 
   @example
@@ -433,6 +449,7 @@ export class PromptExampleFactory {
             if (str.length) str += ".";
             return str;
           }
+
           function filter(ids: number[]) {
             ids = ids.filter(async (id) => {
               const item = (await Zotero.Items.getAsync(id)) as Zotero.Item;
@@ -440,6 +457,7 @@ export class PromptExampleFactory {
             });
             return ids;
           }
+
           const text = prompt.inputNode.value;
           prompt.showTip("Searching...");
           const s = new Zotero.Search();
