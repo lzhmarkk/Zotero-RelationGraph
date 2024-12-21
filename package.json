@@ -1,23 +1,23 @@
 {
-  "name": "zotero-plugin-template",
-  "version": "3.0.2",
+  "name": "zotero-relationgraph",
+  "version": "0.0.1",
   "description": "Zotero Plugin Template",
   "config": {
     "addonName": "Zotero Plugin Template",
-    "addonID": "addontemplate@euclpts.com",
-    "addonRef": "addontemplate",
-    "addonInstance": "AddonTemplate",
-    "prefsPrefix": "extensions.zotero.addontemplate"
+    "addonID": "relationGraph@lzhmark.com",
+    "addonRef": "relationgraph",
+    "addonInstance": "RelationGraph",
+    "prefsPrefix": "extensions.zotero.relationgraph"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/windingwind/zotero-plugin-template.git"
+    "url": "git+https://github.com/lzhmarkk/Zotero-RelationGraph.git"
   },
-  "author": "windingwind",
+  "author": "lzhmark",
   "bugs": {
     "url": "https://github.com/windingwind/zotero-plugin-template/issues"
   },
-  "homepage": "https://github.com/windingwind/zotero-plugin-template#readme",
+  "homepage": "https://github.com/lzhmarkk/Zotero-RelationGraph#readme",
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "start": "zotero-plugin serve",

@@ -811,9 +811,9 @@ export class HelperExampleFactory {
       })
       .setDialogData(dialogData)
       .open("Dialog Example");
-    addon.data.dialog = dialogHelper;
+    // addon.data.dialog = dialogHelper;
     await dialogData.unloadLock.promise;
-    addon.data.dialog = undefined;
+    // addon.data.dialog = undefined;
     if (addon.data.alive)
       ztoolkit.getGlobal("alert")(
         `Close dialog with ${dialogData._lastButtonId}.\nCheckbox: ${dialogData.checkboxValue}\nInput: ${dialogData.inputValue}.`,
