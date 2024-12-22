@@ -3,6 +3,7 @@ import { ColumnOptions } from "zotero-plugin-toolkit/dist/helpers/virtualizedTab
 import hooks from "./hooks";
 import { createZToolkit } from "./utils/ztoolkit";
 import GraphView from "./modules/graphview";
+import Utils from "./utils/utils";
 
 class Addon {
   public data: {
@@ -20,6 +21,7 @@ class Addon {
       rows: Array<{ [dataKey: string]: string }>;
     };
     graph?: GraphView;
+    utils: Utils;
   };
   // Lifecycle hooks
   public hooks: typeof hooks;
@@ -32,6 +34,7 @@ class Addon {
       config,
       env: __env__,
       ztoolkit: createZToolkit(),
+      utils: new Utils()
     };
     this.hooks = hooks;
     this.api = {};

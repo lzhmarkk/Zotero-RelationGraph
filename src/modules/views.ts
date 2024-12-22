@@ -1,5 +1,7 @@
 import { getLocaleID, getString } from "../utils/locale";
 import GraphView from "./graphview";
+import { updateItemReferences } from "./relation";
+
 
 function example(
   target: any,
@@ -150,6 +152,25 @@ export class UIExampleFactory {
     ztoolkit.Menu.register("item", {
       tag: "menuseparator"
     });
+
+    ztoolkit.Menu.register("item", {
+      tag: "menuitem",
+      id: `zotero-itemmenu-refreshReference`,
+      label: "Refresh Reference from PDF",
+      commandListener: async () => {
+        const selected_items: Zotero.Item[] = ztoolkit.getGlobal("ZoteroPane").getSelectedItems();
+        for (const item of selected_items) {
+          if (item.relatedItems.length > 0){
+            continue
+          }
+
+          await updateItemReferences(item)
+
+        }
+      }
+    }
+    );
+
 
     ["citation", "author", "tag"].forEach((mode) => {
       ztoolkit.Menu.register("item", {
