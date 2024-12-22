@@ -188,8 +188,7 @@ class Utils {
     const title = this.get_title_from_text(info)!
     ztoolkit.log("phased candidate title", title)
 
-
-    const getPureText = (s:string) => s?.toLowerCase().match(/[0-9a-z\u4e00-\u9fa5]+/g)!.join("")
+    const getPureText = (s:string) => s?.toLowerCase().match(/[0-9a-z\u4e00-\u9fa5]+/g)?.join("")
 
     const all_items: Zotero.Item[] = (await Zotero.Items.getAll(1)).filter(i => (
       i.isRegularItem() && i.getField("title"))

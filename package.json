@@ -1,6 +1,6 @@
 {
   "name": "zotero-relationgraph",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Zotero Plugin Template",
   "config": {
     "addonName": "Zotero Plugin Template",

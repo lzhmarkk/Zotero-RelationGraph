@@ -21,8 +21,9 @@ export async function updateItemReferences(item: Zotero.Item) {
 
           await Promise.all(addRelatedPromises);
           await Zotero.Promise.delay(500);
-          await item.saveTx();
-          (reader as ReaderTab).close();
+          await item.saveTx().then(()=>{
+            (reader as ReaderTab).close();
+          });
         }
     });
   }
